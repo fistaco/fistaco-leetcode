@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            string treeString = Console.ReadLine();
+            Node root = Node.ParseRootFromTreeString(treeString);
+            root.PrintTree();
         }
     }
 }
