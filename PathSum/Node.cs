@@ -42,15 +42,20 @@ namespace PathSum
             }
 
             // Set children according to their known indices
-            for (int i = 0; i < nodes.Length; i++)
+            int nullNodePenalty = 0; // When a null node is encountered, it won't have children in the given string
+            for (int j = 0; j < nodes.Length; j++)
             {
-                if (nodes[i] == null) { continue;  }
+                if (nodes[j] == null) 
+                {
+                    nullNodePenalty += 2;
+                    continue; 
+                }
 
-                int childIdx1 = 2 * i + 1;
-                int childIdx2 = 2 * i + 2;
+                int childIdx1 = 2 * j + 1 - nullNodePenalty;
+                int childIdx2 = 2 * j + 2 - nullNodePenalty;
 
-                nodes[i].Left = childIdx1 < nodes.Length ? nodes[childIdx1] : null;
-                nodes[i].Right = childIdx2 < nodes.Length ? nodes[childIdx2] : null;
+                nodes[j].Left = childIdx1 < nodes.Length ? nodes[childIdx1] : null;
+                nodes[j].Right = childIdx2 < nodes.Length ? nodes[childIdx2] : null;
             }
             return nodes[0];
         }
