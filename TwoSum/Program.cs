@@ -18,4 +18,7 @@
 int[] nums = new int[] {2, 7, 11, 15};
 int target = 9;
 
-int[] two_sum_output = TwoSum(nums, target);
+int[] res = TwoSum(nums, target);
+
+// Print output cleanly
+Console.WriteLine("[" + res[0].ToString() + "," + res[1].ToString() + "]");
